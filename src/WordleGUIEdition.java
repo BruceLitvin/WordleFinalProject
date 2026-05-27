@@ -5,17 +5,17 @@ import java.io.*;
 import java.util.*;
 
 public class WordleGUIEdition extends JFrame {
-    private String[] wordleWords = new String[2310];
+    private final ArrayList<String> wordleWords= new ArrayList<>();
     private String current;
     private int strikes = 0;
-    private int MAX_STRIKES = 10;
+    private final int MAX_STRIKES = 10;
     private JPanel gridPanel;
     private JTextField inputField;
     private JTextArea binaryLog;
-    private Color BG_COLOR = new Color(18, 18, 19);
-    private Color ACCENT_COLOR = new Color(58, 58, 60);
-    private Color TEXT_COLOR = new Color(255, 255, 255);
-    private Color BINARY_GOLD = new Color(215, 185, 54);
+    private final Color BG_COLOR = new Color(18, 18, 19);
+    private final Color ACCENT_COLOR = new Color(58, 58, 60);
+    private final Color TEXT_COLOR = new Color(255, 255, 255);
+    private final Color BINARY_GOLD = new Color(215, 185, 54);
 
     public WordleGUIEdition() {
         setupWindow();
@@ -82,7 +82,7 @@ public class WordleGUIEdition extends JFrame {
         inputField.setText("");
 
 
-        if (!guess.matches("^[a-z A-Z]{5}$")) {
+        if (!guess.matches("^[a-zA-Z]{5}$")) {
             JOptionPane.showMessageDialog(this, "Invalid entry! 5 letters only.");
             return;
         }
@@ -125,15 +125,14 @@ public class WordleGUIEdition extends JFrame {
 
     private void initializeData() {
         try (Scanner s = new Scanner(new File("Wordle.txt"))) {
-            int i = 0;
-            while (s.hasNext() && i < 2310) wordleWords[i++] = s.next();
+            while (s.hasNext()) wordleWords .add(s.next());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "File Wordle.txt not found!");
         }
     }
 
     private void pickWord() {
-        current = wordleWords[(int) (Math.random() * 2310)];
+        current = wordleWords.get((int)(Math.random() * wordleWords.size()));
 
     }
 }
