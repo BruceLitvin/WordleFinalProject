@@ -8,14 +8,14 @@ public class WordleGUIEdition extends JFrame {
     private String[] wordleWords = new String[2310];
     private String current;
     private int strikes = 0;
-    private final int MAX_STRIKES = 10;
+    private int MAX_STRIKES = 10;
     private JPanel gridPanel;
     private JTextField inputField;
     private JTextArea binaryLog;
-    private final Color BG_COLOR = new Color(18, 18, 19);
-    private final Color ACCENT_COLOR = new Color(58, 58, 60);
-    private final Color TEXT_COLOR = new Color(255, 255, 255);
-    private final Color BINARY_GOLD = new Color(215, 185, 54); // Elegant gold for 1s/0s
+    private Color BG_COLOR = new Color(18, 18, 19);
+    private Color ACCENT_COLOR = new Color(58, 58, 60);
+    private Color TEXT_COLOR = new Color(255, 255, 255);
+    private Color BINARY_GOLD = new Color(215, 185, 54);
 
     public WordleGUIEdition() {
         setupWindow();
@@ -83,12 +83,12 @@ public class WordleGUIEdition extends JFrame {
         inputField.setText("");
 
 
-        if (!guess.matches("^[A-Z]{5}$")) {
+        if (!guess.matches("^[a-z A-Z]{5}$")) {
             JOptionPane.showMessageDialog(this, "Invalid entry! 5 letters only.");
             return;
         }
         JLabel rowLabel = (JLabel) gridPanel.getComponent(strikes);
-        rowLabel.setText(guess.replace("", " ").trim()); // Adds spacing for elegance
+        rowLabel.setText(guess.replace("", " ").trim());
         rowLabel.setForeground(TEXT_COLOR);
         StringBuilder binary = new StringBuilder();
         for (int i = 0; i < 5; i++) {
@@ -100,7 +100,6 @@ public class WordleGUIEdition extends JFrame {
         }
         binaryLog.append(" " + (strikes + 1) + ". [" + binary + "]\n");
 
-        // Win/Loss logic
         if (guess.equalsIgnoreCase(current)) {
             endGame("✨ YOU CRACKED THE CODE! ✨");
         } else {
@@ -122,7 +121,6 @@ public class WordleGUIEdition extends JFrame {
         binaryLog.setText("");
         for (Component c : gridPanel.getComponents()) {
             ((JLabel) c).setText("_ _ _ _ _");
-            ((JLabel) c).setForeground(ACCENT_COLOR);
         }
     }
 
