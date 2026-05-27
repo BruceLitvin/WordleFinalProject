@@ -57,7 +57,6 @@ public class WordleGUIEdition extends JFrame {
         binaryLog.setFont(new Font("Monospaced", Font.BOLD, 22));
         binaryLog.setBorder(BorderFactory.createTitledBorder(
                 new LineBorder(ACCENT_COLOR), "FEEDBACK (1=HIT)", 0, 0, null, BINARY_GOLD));
-
         centerArea.add(gridPanel);
         centerArea.add(new JScrollPane(binaryLog));
         add(centerArea, BorderLayout.CENTER);
@@ -101,11 +100,11 @@ public class WordleGUIEdition extends JFrame {
         binaryLog.append(" " + (strikes + 1) + ". [" + binary + "]\n");
 
         if (guess.equalsIgnoreCase(current)) {
-            endGame("✨ YOU CRACKED THE CODE! ✨");
+            endGame("You Won");
         } else {
             strikes++;
             if (strikes >= MAX_STRIKES) {
-                endGame("❌ OUT OF TRIES! Word was: " + current.toUpperCase());
+                endGame(" You lose.  The word was: " + current.toUpperCase());
             }
         }
     }
@@ -133,7 +132,8 @@ public class WordleGUIEdition extends JFrame {
         }
     }
 
-    public void pickWord() {
+    private void pickWord() {
         current = wordleWords[(int) (Math.random() * 2310)];
+
     }
 }
