@@ -79,7 +79,7 @@ public class WordleGUIEdition extends JFrame {
     }
 
     private void handleGuess() {
-        String guess = inputField.getText().trim().toUpperCase();
+        String guess = inputField.getText().toUpperCase();
         inputField.setText("");
 
 
