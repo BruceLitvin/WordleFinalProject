@@ -13,7 +13,6 @@ public class WordleGUIEdition extends JFrame {
     private JTextField inputField;
     private JTextArea binaryLog;
     private final Color BG_COLOR = new Color(18, 18, 19);
-    //private final Color ACCENT_COLOR = new Color(58, 58, 60);
     private final Color TEXT_COLOR = new Color(255, 255, 255);
     private final Color BINARY_GOLD = new Color(215, 185, 54);
 
