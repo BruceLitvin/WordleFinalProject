@@ -13,7 +13,7 @@ public class WordleGUIEdition extends JFrame {
     private JTextField inputField;
     private JTextArea binaryLog;
     private final Color BG_COLOR = new Color(18, 18, 19);
-    private final Color ACCENT_COLOR = new Color(58, 58, 60);
+    //private final Color ACCENT_COLOR = new Color(58, 58, 60);
     private final Color TEXT_COLOR = new Color(255, 255, 255);
     private final Color BINARY_GOLD = new Color(215, 185, 54);
 
@@ -47,7 +47,7 @@ public class WordleGUIEdition extends JFrame {
         for (int i = 0; i < MAX_STRIKES; i++) {
             JLabel label = new JLabel("_ _ _ _ _", SwingConstants.CENTER);
             label.setFont(new Font("Monospaced", Font.BOLD, 20));
-            label.setForeground(ACCENT_COLOR);
+            label.setForeground(TEXT_COLOR);
             gridPanel.add(label);
         }
         binaryLog = new JTextArea();
@@ -56,7 +56,7 @@ public class WordleGUIEdition extends JFrame {
         binaryLog.setForeground(BINARY_GOLD);
         binaryLog.setFont(new Font("Monospaced", Font.BOLD, 22));
         binaryLog.setBorder(BorderFactory.createTitledBorder(
-                new LineBorder(ACCENT_COLOR), "FEEDBACK (1=HIT)", 0, 0, null, BINARY_GOLD));
+                new LineBorder(TEXT_COLOR), "FEEDBACK (1=HIT)", 0, 0, null, BINARY_GOLD));
         centerArea.add(gridPanel);
         centerArea.add(new JScrollPane(binaryLog));
         add(centerArea, BorderLayout.CENTER);
